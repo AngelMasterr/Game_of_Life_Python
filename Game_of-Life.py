@@ -15,11 +15,37 @@ Ncs_y = 24
 cell_w = width/Ncs_x
 cell_h = heigth/Ncs_y
 
+# estate of the cells. lives = 1; dead = 0;
+# create a matrix with the size of the grid
+gameState = np.zeros((Ncs_x, Ncs_y))
+
 # keep screen active, crete a inifinite loop
 while True:
     # create the cell graphic on the screen
     for y in range(0, Ncs_y):
         for x in range(0, Ncs_x):
+            
+            # calculate the number of nearest neighbors
+            n_neigh = gameState [(x-1) % Ncs_x, (y-1) % Ncs_y] + \
+                                [ (x)  % Ncs_x, (y-1) % Ncs_y] + \
+                                [(x+1) % Ncs_x, (y-1) % Ncs_y] + \
+                                [(x-1) % Ncs_x,  (y)  % Ncs_y] + \
+                                [(x+1) % Ncs_x,  (y)  % Ncs_y] + \
+                                [(x-1) % Ncs_x, (y+1) % Ncs_y] + \
+                                [ (x)  % Ncs_x, (y+1) % Ncs_y] + \
+                                [(x+1) % Ncs_x, (y+1) % Ncs_y] 
+                                
+            # rule 1: one dead cell with exactly three live neighboring cells, "revive" 
+            if gameState[x, y] == 0 and n_neigh == 3:
+                gameState[x, y] = 1
+            
+            # rule 2: one live cell with less than two or more than three live neighboring cells, #dies"
+            if gameState[x, y] == 1 and n_neigh < 2 or n_neigh > 3:
+                gameState[x, y] = 0
+            
+            #        
+            
+            # create the polygon each cell to draw
             poly = [(  x    * cell_w,     y   * cell_h),
                     ((x+1)  * cell_w,     y   * cell_h),
                     ((x+1)  * cell_w,   (y+1) * cell_h),
