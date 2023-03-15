@@ -49,7 +49,9 @@ while True:
                 new_gameState[cel_x, cel_y] = 1
             # if right mouse buton is pressed the cell become to 0, "dead"
             elif mouse_click[2] == True:
-                new_gameState[cel_x, cel_y] = 0    
+                new_gameState[cel_x, cel_y] = 0 
+            elif mouse_click[1] == True:
+                new_gameState = np.zeros((Ncs_x, Ncs_y))   
     
     # create the cell graphic on the screen
     for y in range(0, Ncs_y):
