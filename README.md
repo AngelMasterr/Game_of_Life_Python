@@ -6,3 +6,9 @@ Any live cell with fewer than two live neighbors dies, as if by underpopulation.
 Any live cell with two or three live neighbors lives on to the next generation.
 Any live cell with more than three live neighbors dies, as if by overpopulation.
 Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+Instructions:
+1. The game starts paused, with any key unpause and vice versa
+2. with the left mouse button, make the cells live
+3. with the right mouse button, make the cells dead
+4. with the center mouse button, clean the screen
