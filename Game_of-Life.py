@@ -1,11 +1,14 @@
 import pygame
 import numpy as np
 import time
+import sys
 
 pygame.init()
 # create the screen with its dimensions
 width, heigth = 800, 600
 screen = pygame.display.set_mode((width, heigth))
+# Title of the window
+pygame.display.set_caption("Game of Life")
 # assign a dark gray for the screen background
 bg = 25, 25, 25
 screen.fill(bg)
@@ -21,7 +24,7 @@ cell_h = heigth/Ncs_y
 gameState = np.zeros((Ncs_x, Ncs_y))
 
 # key or mouse button variables
-pauseExect = False
+pauseExect = True
 
 
 # keep screen active, crete a inifinite loop
@@ -36,9 +39,13 @@ while True:
     # check if a key or mouse button is pressed
     ev = pygame.event.get()   
     for event in ev:
-         # swap the variable "pauseExect" between False and True
-        if event.type == pygame.KEYDOWN:
-            pauseExect = not pauseExect
+        # exit the game
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        # swap the variable "pauseExect" between False and True        
+        if event.type == pygame.KEYDOWN:            
+            pauseExect = not pauseExect        
         # check which mouse button is pressed
         mouse_click = pygame.mouse.get_pressed()
         # if left mouse buton is pressed the cell become to 1, "live"
@@ -51,8 +58,8 @@ while True:
             elif mouse_click[2] == True:
                 new_gameState[cel_x, cel_y] = 0 
             elif mouse_click[1] == True:
-                new_gameState = np.zeros((Ncs_x, Ncs_y))   
-    
+                new_gameState = np.zeros((Ncs_x, Ncs_y)) 
+       
     # create the cell graphic on the screen
     for y in range(0, Ncs_y):
         for x in range(0, Ncs_x):
@@ -88,7 +95,7 @@ while True:
             if new_gameState[x, y] == 0:                           
                 pygame.draw.polygon(screen, (128,128,128), poly, width=1)
             else:
-                pygame.draw.polygon(screen, (255,255,255), poly, width=0)
+                pygame.draw.polygon(screen, (255,255,255), poly, width=0)    
     
     # we update the state of the game
     gameState = np.copy(new_gameState)
@@ -96,3 +103,5 @@ while True:
     # display: show and update the frames in each iteration of the loop    
     pygame.display.flip()
     
+                            
+        
