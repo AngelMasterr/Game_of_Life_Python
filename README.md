@@ -1,5 +1,5 @@
 # Game_of_Life_Python
-The Game of Life is a simulation of a population of cells that evolve over time according to a set of simple rules. The simulation takes place on a two-dimensional grid, where each cell can be either alive or dead
+The Game of Life is a simulation of a population of cells that evolve over time according to a set of simple rules. The simulation takes place on a two-dimensional grid, where each cell can be either alive or dead↳
 
 The rules of the Game of Life are as follows:
 Any live cell with fewer than two live neighbors dies, as if by underpopulation.
