@@ -13,7 +13,4 @@ Instructions:
 3. with the right mouse button, make the cells dead
 4. with the center mouse button, clean the screen
 
-<video width="320" height="240" controls>
-  <source src="clip_Game_of_Life2.mp4" type="video/mp4">
-  Your browser does not support the video tag
-video>
+[Ver video](clip_Game_of_Life2.mp4)
