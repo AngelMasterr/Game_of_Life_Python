@@ -13,4 +13,5 @@ Instructions:
 3. with the right mouse button, make the cells dead
 4. with the center mouse button, clean the screen
 
-[Ver video](clip_Game_of_Life2.mp4)
+![Alt Text](clip_Game_of_Life.gif)
+
